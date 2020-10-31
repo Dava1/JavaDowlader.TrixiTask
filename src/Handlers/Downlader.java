@@ -4,25 +4,28 @@ import Entity.CastAObce;
 import Entity.Obec;
 import Parser.XmlParser;
 
+import java.io.File;
 import java.util.Set;
 
 public class Downlader {
+  //pro spracovani dat
   private UrlDownloader urlDownloader;
-  private ZipHandler zipHandler;
+  private UnZipHandler unZipHandler;
   private XmlParser xmlParser;
 
-  public Downlader(){
-       urlDownloader = new UrlDownloader();
-       urlDownloader.downloadZip();
-       zipHandler = new ZipHandler();
-       zipHandler.unzip();
+private String dirPath = "/home/davinci/Downloads/TrixiDownloader/";
+private String path = "/home/davinci/Downloads/TrixiDownloader/Trixi.zip";
+    public Downlader(String fileName,String url){
+       urlDownloader = new UrlDownloader(fileName);
+       urlDownloader.download(url);
+       unZipHandler = new UnZipHandler(path,new File(dirPath));
+       unZipHandler.unzip();
        xmlParser = new XmlParser();
    }
-
    public Set<Obec> getObce(){
      return xmlParser.getSetObce();
   }
-  public Set<CastAObce> getCastObces(){
+    public Set<CastAObce> getCastObces(){
       return xmlParser.getSetCastObce();
   }
 }

@@ -1,5 +1,7 @@
 package Handlers;
 
+import Interfacies.IDownlader;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,16 +10,22 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 /**
- * tato trida stahne zip z Url
+ * tato trida stahne soubor z urzitoho Urla a ulozit do home direktore s  vasem nazvem
  */
-public class UrlDownloader {
-    public void downloadZip() {
+public class UrlDownloader implements IDownlader {
+    //"https://vdp.cuzk.cz/vymenny_format/soucasna/20200930_OB_573060_UZSZ.xml.zip"
+    private String fileName;
+    public UrlDownloader(String fileName){
+        this.fileName = fileName;
+    }
+    @Override
+    public void download(String url) {
         try {
-        URL url = new URL( "https://vdp.cuzk.cz/vymenny_format/soucasna/20200930_OB_573060_UZSZ.xml.zip");
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        URL urlZip = new URL(url);
+            HttpURLConnection connection = (HttpURLConnection)urlZip.openConnection();
             connection.setRequestMethod("GET");
             InputStream in = connection.getInputStream();
-            FileOutputStream out = new FileOutputStream("Trixi.zip");
+            FileOutputStream out = new FileOutputStream(fileName);
             copy(in,out,1024);
             out.close();
         } catch (ProtocolException e) {
@@ -26,7 +34,8 @@ public class UrlDownloader {
             e.printStackTrace();
         }
     }
-    public static void copy(InputStream in, FileOutputStream out,int size){
+
+    private static void copy(InputStream in, FileOutputStream out,int size){
     byte[]  buffer = new byte[size];
     int n = 0;
         try {
