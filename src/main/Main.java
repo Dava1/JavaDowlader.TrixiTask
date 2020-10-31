@@ -1,6 +1,6 @@
 package main;
 
-import Entity.CastObce;
+import Entity.CastAObce;
 import Entity.Obec;
 import Handlers.Downlader;
 
@@ -11,14 +11,14 @@ public class Main {
     public static void main(String[] args) {
         Downlader downlader = new Downlader();
         Set<Obec> obce = downlader.getObce();
-        Set<CastObce> castObce = downlader.getCastObces();
+        Set<CastAObce> castObce = downlader.getCastObces();
         for (Obec e:
              obce) {
-            System.out.println(e.getKod()+" "+e.getNazev()+" "+e.getTypeObce());
+            System.out.println(e.toString());
         }
-        for (CastObce e:
+        for (CastAObce e:
              castObce) {
-            System.out.println(e.getNazev()+" "+e.getKod()+" "+e.getTypeObce());
+            System.out.println(e.toString());
         }
     }
 }

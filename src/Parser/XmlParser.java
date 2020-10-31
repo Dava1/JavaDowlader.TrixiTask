@@ -1,6 +1,6 @@
 package Parser;
 
-import Entity.CastObce;
+import Entity.CastAObce;
 import Entity.Obec;
 
 import javax.xml.stream.XMLEventReader;
@@ -13,19 +13,19 @@ import java.io.FileReader;
 import java.util.*;
 
 /**
- * XMl Parser StAX.
+ * XMl Parser with StAX.
  */
 public  class XmlParser {
 
     /**
      * @return CastObce set pro ukladani do database
      */
-   public Set<CastObce> getSetCastObce(){
+   public Set<CastAObce> getSetCastObce(){
     Set<Obec> set = obceParse("CastObce","vf","coi");
-    Set<CastObce> castObceSet = new LinkedHashSet<>();
+    Set<CastAObce> castObceSet = new LinkedHashSet<>();
         for (Obec e:
             set ) {
-            castObceSet.add(new CastObce(e.getKod(),e.getNazev()));
+            castObceSet.add(new CastAObce(e.getKod(),e.getNazev()));
         }
     return castObceSet;
     }

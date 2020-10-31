@@ -1,6 +1,6 @@
 package Handlers;
 
-import Entity.CastObce;
+import Entity.CastAObce;
 import Entity.Obec;
 import Parser.XmlParser;
 
@@ -10,6 +10,7 @@ public class Downlader {
   private UrlDownloader urlDownloader;
   private ZipHandler zipHandler;
   private XmlParser xmlParser;
+
   public Downlader(){
        urlDownloader = new UrlDownloader();
        urlDownloader.downloadZip();
@@ -21,7 +22,7 @@ public class Downlader {
    public Set<Obec> getObce(){
      return xmlParser.getSetObce();
   }
-  public Set<CastObce> getCastObces(){
+  public Set<CastAObce> getCastObces(){
       return xmlParser.getSetCastObce();
   }
 }

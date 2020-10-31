@@ -12,8 +12,7 @@ public class ZipHandler {
     String pathFile = "/home/davinci/Downloads/TrixiDownloader/Trixi.zip";
     File destDir = new File("/home/davinci/Downloads/TrixiDownloader/");
     byte[] buffer = new byte[1024];
-        try
-    {
+        try{
         ZipInputStream zipInputStream = new ZipInputStream(new FileInputStream(pathFile));
         ZipEntry zipEntry = zipInputStream.getNextEntry();
         while (zipEntry != null) {

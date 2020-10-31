@@ -1,5 +1,5 @@
-package Entity;
+package Enums;
 
 public enum ObceType {
-    OBEC,CASTOBCE
+    OBEC, CAST_OBCE
 }

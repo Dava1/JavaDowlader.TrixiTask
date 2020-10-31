@@ -1,6 +1,6 @@
 package DataBaseHandler;
 
-import Entity.CastObce;
+import Entity.CastAObce;
 import Entity.Obec;
 
 import java.sql.Connection;
@@ -41,18 +41,18 @@ public class DataBaseHandler {
        }
        return true;
    }
-   public boolean addCastObce(Set<CastObce> castObces){
-      try{
-       Connection con  = DataBaseConnector.getConnection();
-       Statement stmt = con.createStatement();
-       ResultSet rs;
-       for (Obec e: castObces){
-           rs = stmt.executeQuery("INSERT INTO CASTOBEC (kod,nazev) "
-                   +"VALUES ("+e.getKod()+","+e.getNazev()+")" );
-       }
-        } catch (SQLException throwables) {
-        throwables.printStackTrace();
-        }
+   public boolean addCastObce(Set<CastAObce> castObces){
+//      try{
+//       Connection con  = DataBaseConnector.getConnection();
+//       Statement stmt = con.createStatement();
+//       ResultSet rs;
+//       for (Obec e: castObces){
+//           rs = stmt.executeQuery("INSERT INTO CASTOBEC (kod,nazev) "
+//                   +"VALUES ("+e.getKod()+","+e.getNazev()+")" );
+//       }
+//        } catch (SQLException throwables) {
+//        throwables.printStackTrace();
+//        }
         return true;
     }
 }
